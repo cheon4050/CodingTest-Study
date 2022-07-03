@@ -1,13 +1,22 @@
+from collections import deque
+def bfs(start):
+    queue= deque([start])
+    visited[start]=True
+    while queue:
+        v= queue.popleft()
+        for i in graph[v]:
+            if not visited[i]:
+                visited[i] = True
+                queue.append(i)
+                parent[i]=v #부모 정보 입력
+
 n=int(input())
-parents=[0 for i in range(n+1)]
-alreadyExists={1}
+graph=[[]for _ in range(n+1)]
 for _ in range(n-1):
     a,b=map(int,input().split())
-    if a in alreadyExists:
-        parents[b]=a
-        alreadyExists.add(b)
-    else:
-        parents[a]=b
-        alreadyExists.add(a)
-for i in range(2,n+1):
-    print(parents[i])
+    graph[a].append(b)
+    graph[b].append(a)
+visited=[False]*(n+1)
+parent=[i for i in range(n+1)] #부모를 자기 자신으로 초기화
+bfs(1) #루트가 1이라서
+print(*parent[2:]) #2번노드부터 출력
