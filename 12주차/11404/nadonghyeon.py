@@ -2,7 +2,7 @@
 n = int(input())
 m = int(input())
 bus_cost = [[100001 for _ in range(n+1)] for _ in range(n+1)]
-
+print(bus_cost)
 for _ in range(m):
     start, end, cost = map(int, input().split())
     bus_cost[start][end] = min(cost, bus_cost[start][end])
