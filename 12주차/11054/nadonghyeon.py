@@ -12,6 +12,9 @@ for i in range(x):
             increase[i] = max(increase[i], increase[j]+1)
         if reverse_case[i] > reverse_case[j]:
             decrease[i] = max(decrease[i], decrease[j]+1)
+    print(increase)
+    print("dd")
+    print(decrease)
 
 result = [0 for i in range(x)]
 for i in range(x):
