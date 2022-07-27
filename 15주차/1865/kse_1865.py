@@ -11,7 +11,7 @@ T = int(input())
 def BF_AllNode(N, G):
     dist = [INF] * (N + 1)
 
-    """시작지점 1번에서 출발"""
+    #시작지점 1번에서 출발
     dist[1] = 0
 
     for _ in range(1, N + 1):
