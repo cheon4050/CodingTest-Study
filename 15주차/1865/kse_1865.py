@@ -73,7 +73,7 @@ def BF_AnotherNode(N, G):
     temp = [(i, 0) for i in range(1, N + 1)]
     G.insert(N + 1, temp)
 
-    """시작지점 N+1번(가짜 노드)에서 출발"""
+    #시작지점 N+1번(가짜 노드)에서 출발
     dist.append(0)
 
     for _ in range(1, N + 2):
