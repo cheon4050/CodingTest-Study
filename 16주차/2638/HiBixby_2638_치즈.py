@@ -26,15 +26,15 @@ hours = 0
 while True:
     visited = [[False for _ in range(m)]for _ in range(n)]
     bfs()
-    is_melt = False
+    is_melt_in_this_round = False
     for i in range(n):
         for j in range(m):
             if paper[i][j] >= 3:
                 paper[i][j] = 0
-                is_melt = True
+                is_melt_in_this_round = True
             elif paper[i][j] == 2:
                 paper[i][j] = 1
-    if is_melt:
+    if is_melt_in_this_round:
         hours += 1
     else:
         break
