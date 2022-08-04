@@ -1,4 +1,4 @@
-# codingTest-Study
+# CodingTest-Study
 
 코딩테스트 스터디 코드 저장소 입니다.
 
