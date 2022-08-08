@@ -1,13 +1,13 @@
-# CodingTest-Study
+# CodingTest-Study ✏
 
 코딩테스트 스터디 코드 저장소 입니다.
 
-## 스터디 Rule ##
+## 📝 Study Rule ##
 - solved.ac 클래스 2부터 순서대로 시작
 - 매주 오프라인으로 만나기 전까지 7문제 풀이 완료하기
 - 발표 순서 정해서 코드 설명 및 질의응답
 - 만날 때 다같이 push하기
-## 커밋 Rule ##
+## 📝 Commit Rule ##
 * push 전 fetch & pull 하고 푸쉬하기
 * 폴더 구조는 다음과 같다.
     * 주차별 폴더 - 문제 폴더 - 문제 소스코드 파일
