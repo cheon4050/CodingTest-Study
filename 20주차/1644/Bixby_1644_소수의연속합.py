@@ -1,9 +1,12 @@
 n = int(input())
 # n까지의 소수 구하기
-primes = set(range(2, n+1))
+primes = [True]*(n+1)
 for i in range(2, int(n**0.5)+1):
-    primes -= set(range(i+i, n+1, i))
-primes = sorted(primes)+[0]
+    if primes[i]:
+        for j in range(i+i, n+1, i):
+            primes[j] = False
+
+primes = [i for i in range(2, n + 1) if primes[i]] + [0]
 # 연속합 구하기
 cnt = 0
 l = r = 0
