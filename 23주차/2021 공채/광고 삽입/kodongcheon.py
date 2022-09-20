@@ -31,9 +31,3 @@ def solution(play_time, adv_time, logs):
     Seconds = "0" * (2 - len(Seconds)) + Seconds
 
     return Hour + ":" + Minute + ":" + Seconds
-
-
-
-
-
-
