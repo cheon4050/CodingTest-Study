@@ -1,16 +1,13 @@
 n, k = map(int, input().split())
 # 동전 종류 입력
-coins = []
-for _ in range(n):
-    coins.append(int(input()))
-coins.sort()
+coins = [int(input())for _ in range(n)]
 # 경우의 수 계산
-number_of_cases = [0]*(n+1)
-for index, number in enumerate(number_of_cases):
-    if index<coins[0]:
-        continue
-    for coin in coins:
-        
+number_of_cases = [1]+[0]*k
+for coin in coins:
+    for i in range(coin, k+1):
+        if i-coin >= 0:
+            number_of_cases[i] += number_of_cases[i-coin]
+print(number_of_cases[k])
 
 # 점화식
-# dp[i] = dp[i-coin] + 
+# dp[i] += dp[i-coin]
