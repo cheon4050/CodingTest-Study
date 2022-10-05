@@ -1,7 +1,5 @@
 n = int(input())
 meeting = [] # 회의 시작, 종료 시간을 저장하는 리스트
-room = 0
-meeting_count = 0
 
 for _ in range(n):
     start, end = map(int, input().split()) # 회의 시작, 종료 시간 입력 받음
@@ -9,6 +7,9 @@ for _ in range(n):
     meeting.append([end, -1]) # 종료 시간은 -1과 함께 추가
 
 meeting.sort() # 리스트 정렬
+
+room = 0
+meeting_count = 0
 
 for _, state in meeting: # state는 1, -1 둘 중 하나
     meeting_count = meeting_count + state
