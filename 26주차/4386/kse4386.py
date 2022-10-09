@@ -1,8 +1,8 @@
 import heapq
 
-n = int(input())
+n = int(input()) #별의 개수
 
-star = [list(map(float, input().split())) for _ in range(n)]
+star = [list(map(float, input().split())) for _ in range(n)] #별의 x, y좌표
 edge = [[] for _ in range(n)]
 
 for i in range(n):
@@ -10,19 +10,19 @@ for i in range(n):
         distance = ((star[i][0] - star[j][0])**2 + (star[i][1] - star[j][1])**2)**0.5
         edge[i].append([distance, j])
         edge[j].append([distance, i])
-chk = [False] * n
+temp = [False] * n
 heap = [[0, 0]]
-rs = 0
+answer = 0
 
 while heap:
 
-    w, node = heapq.heappop(heap)
-    if chk[node] == False:
-        chk[node] = True
-        rs += w
+    i, node = heapq.heappop(heap)
+    if temp[node] == False:
+        temp[node] = True
+        answer += i
 
-        for e in edge[node]:
-            if chk[e[1]] == False:
-                heapq.heappush(heap, e)
+        for j in edge[node]:
+            if temp[j[1]] == False:
+                heapq.heappush(heap, j)
 
-print(round(rs, 2))
+print(round(answer, 2))
