@@ -8,12 +8,12 @@ def solution(routes):
         answer+=1
         temp = []
         for car in routes:
-            if car[0] <= start and start <= car[1]: #예시로 들면 -10
+            if car[0] <= start and start <= car[1]: #아예 다른 경로이면 continue
                 continue
             else:
                 temp.append(car) #temp에 해당 차 정보를 넣는다.
-                print(temp)
-        routes = temp
+                print(answer, temp)
+        routes = temp #다시 갱신 temp로!
     return answer
 
 print(solution([[-20,-15], [-14,-5], [-18,-13], [-5,-3]]))
