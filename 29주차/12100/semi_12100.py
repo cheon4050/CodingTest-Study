@@ -1,9 +1,15 @@
 # 최대 5번 이동해서 만들 수 있는 가장 큰 블록의 값을 구하는 프로그램
 
+# 4
+# 2 4 16 8
+# 8 4 0 0
+# 16 8 2 0
+# 2 8 2 0
 import copy
 
 def dfs(dir):
     global result
+    flag = [[False for _ in range(N)] for _ in range(N)]
     for a in range(N):
         for b in range(N):
             x, y = a, b  # 복사
@@ -40,6 +46,7 @@ def move(depth):
     if depth == 5:
         for k in range(N):
             result = max(result, max(game[k]))  # 이동하고 난 배열의 가장 큰 값 찾기
+        print(dir, game)
         return
 
     arr = copy.deepcopy(game)  # 원본 배열의 상태 유지
@@ -51,8 +58,8 @@ def move(depth):
 
 N = int(input())
 game = [list(map(int, input().split())) for _ in range(N)]
-flag = [[False for _ in range(N)] for _ in range(N)]
 dx, dy = [1, -1, 0, 0], [0, 0, 1, -1]
 result = 0
-move(0)
+dfs(0)
+# move(0)
 print(result)
