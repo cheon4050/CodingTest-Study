@@ -3,7 +3,7 @@
 def dfs(start, node, visit):
     st = [start]
     visit[start] = True
-    cnt = 1       # 한 트리에 몇개가 연결되어 있는지 체크
+    cnt = 1  # 한 트리에 몇개가 연결되어 있는지 체크
 
     while st:
         x = st.pop()
@@ -17,26 +17,37 @@ def dfs(start, node, visit):
 
 def solution(n, wires):
     result = float("inf")
+    node = [[] for _ in range(n + 1)]  # 인접한 노드 정보
+
+    for w in wires:  # 인접한 노드 정보 초기화
+        node[w[0]].append(w[1])
+        node[w[1]].append(w[0])
 
     for i in range(len(wires)):
-        node = [[] for _ in range(n + 1)]   # 인접한 노드 정보
         visit = [False for _ in range(n + 1)]  # 방문 정보
+        v1, v2 = wires[i]
+        visit[v2] = True  # 하나씩 전선(연결)을 끊는 행위를 미리 방문 처리 해줌으로써 해결 가능
+        result = min(result, abs(dfs(v1, node, visit) - dfs(v2, node, visit)))
 
-        temp_wires = wires[:]
-        temp_wires.remove(wires[i])   # 전선을 하나씩 끊기
-
-        for w in temp_wires:          # 인접한 노드 정보 초기화
-            node[w[0]].append(w[1])
-            node[w[1]].append(w[0])
-
-        size1 = dfs(1, node, visit)     # 첫번째 부분 트리에 대해 개수 탐색
-        size2 = 0
-        for j in range(len(visit)):           # 아직 방문되지 않은 노드를 기준(다른 부분 트리)으로 다시 탐색
-            if not visit[j] and j != 0:
-                size2 = dfs(j, node, visit)
-                break
-
-        result = min(result, abs(size1 - size2))   # 두 분할의 차이가 가장 적은 값을 택
     return result
+    # === 이전 코드 ===
+    # node = [[] for _ in range(n + 1)]   # 인접한 노드 정보
+    # visit = [False for _ in range(n + 1)]  # 방문 정보
 
-print(solution(9, [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]))
+    # temp_wires = wires[:]
+    # temp_wires.remove(wires[i])   # 전선을 하나씩 끊기
+    #
+    # for w in wires:          # 인접한 노드 정보 초기화
+    #     node[w[0]].append(w[1])
+    #     node[w[1]].append(w[0])
+    #
+    # size1 = dfs(1, node, visit)     # 첫번째 부분 트리에 대해 개수 탐색
+    # size2 = 0
+    # for j in range(len(visit)):           # 아직 방문되지 않은 노드를 기준(다른 부분 트리)으로 다시 탐색
+    #     if not visit[j] and j != 0:
+    #         size2 = dfs(j, node, visit)
+    #         break
+    #
+    # result = min(result, abs(size1 - size2))   # 두 분할의 차이가 가장 적은 값을 택
+
+print(solution(9, [[1, 3], [2, 3], [3, 4], [4, 5], [4, 6], [4, 7], [7, 8], [7, 9]]))
